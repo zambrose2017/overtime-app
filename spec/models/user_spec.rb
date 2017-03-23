@@ -22,4 +22,4 @@ RSpec.describe User, type: :model do
       expect(@user.full_name).to eq("SNOW, JON")
     end
   end
-end
+end 

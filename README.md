@@ -17,3 +17,6 @@ x AdminUser -> STI
 
 ## UI:
 - Bootstrap -> formatting 
+
+
+-refactor posts/_form for admin usere with status

@@ -20,3 +20,4 @@ x AdminUser -> STI
 
 
 -refactor posts/_form for admin usere with status
+-fix post_spec.rb:54 to have correct user reference and not require update

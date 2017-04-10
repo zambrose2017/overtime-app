@@ -1,5 +1,5 @@
-class User < ActiveRecord
-  has_many :posts
+class User < ApplicationRecord
+    has_many :posts
   has_many :audit_logs
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,13 +8,13 @@ class User < ActiveRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
-PHONE_REGEX = /\A[0-9]*\Z/
+  PHONE_REGEX = /\A[0-9]*\Z/
 
-validates_format_of :phone, with: PHONE_REGEX
+  validates_format_of :phone, with: PHONE_REGEX
 
-validates :phone, length: { is: 10 }
+  validates :phone, length: { is: 10 }
 
   def full_name
-    last_name.upcase + ", " + first_name.upcase
+      last_name.upcase + ", " + first_name.upcase
   end
 end

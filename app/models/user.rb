@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord
   has_many :posts
   has_many :audit_logs
   # Include default devise modules. Others available are:

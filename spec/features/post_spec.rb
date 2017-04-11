@@ -32,7 +32,7 @@ describe 'navigate' do
     end
 
     it 'has a scope so that only post creators can see their posts' do
-      other_user = User.create(first_name: 'Non', last_name: 'Authorized', email: "nonauth@example.com", password: "asdfasdf", password_confirmation: "asdfasdf", phone: "5555555555")
+      other_user = User.create(first_name: 'employee', last_name: 'Authorized', email: "employee@example.com", password: "asdfasdf", password_confirmation: "asdfasdf", phone: "5555555555")
       post_from_other_user = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user_id: other_user.id, overtime_request: 3.5)
 
       visit posts_path
@@ -42,13 +42,15 @@ describe 'navigate' do
   end
 
   describe 'new' do
-    it 'has a link from the homepage' do
-      visit root_path
+  it 'has a link from the homepage' do
+    employee = Employee.create(first_name: 'Employee', last_name: 'Authorized', email: "employee@example.com", password: "asdfasdf", password_confirmation: "asdfasdf", phone: "5555555555")
+    login_as(employee, :scope => :user)
+    visit root_path
 
-      click_link("new_post_from_nav")
-      expect(page.status_code).to eq(200)
-    end
+    click_link("new_post_from_nav")
+    expect(page.status_code).to eq(200)
   end
+end
 
   describe 'delete' do
     it 'can be deleted' do
